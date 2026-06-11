@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navigation {
+    background: #1F2A44;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,.15);
+}
+
+.mainnav {
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.mainnav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin-right: 40px;
+    transition: .3s;
+}
+
+.mainnav a:hover {
+    color: #d4af37;
+}
+
+.sidenav {
+    margin-left: auto;
+}
