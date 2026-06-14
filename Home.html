@@ -3,121 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auction</title>
-
-    <link rel="stylesheet" href="lightgallery.css">
-    <link rel="stylesheet" href="navigation.css">
+    <title>Sign in</title>
     <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="lightGallery-master/dist/css/lightgallery-bundle.css">
-
-    <link rel="stylesheet" type="text/css" href="slick-1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="slick-1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="navigation.css">
+    <link rel="stylesheet" href="pro.css">
 </head>
-
 <body>
-
-<div class="navigation">
-    <div class="mainnav">
-        <a href="Home.html">Home</a>
-        <a href="Auction.html">Auction</a>
-
-        <div class="sidenav">
-            <a href="Form.html">SignUp</a>
-            <a href="Form.html">Login</a>
+    <div class="navigation">
+        <div class="mainnav">
+            <a href="Home.html">Home</a>
+            <a href="Auction.html">Auction</a>
+            <div class="sidenav">
+                <a href="Form.html">SignUp</a>
+                <a href="Form.html">Login</a>
+            </div>
         </div>
     </div>
-</div>
-<div>
-    <h1>Welcome to The Imperial Arts</h1>
-</div>
+    
+    <div class="login">
+        <form>
+            <div class="head">
+                <h2>SIGN UP</h2>
+                <h4>Create an account to make bidding fast and easy!.</h4>
+            </div>
 
-<div class="paragraph">
-    <p>Discover amazing artworks and participate in exciting auctions!</p>
-    <p>Participate in exclusive live auctions and become part of a global community.</p>
-    <p>A curated collection of world-renowned artworks and collectibles.</p>
-</div>
-<!-- <div class="Feature">
-    <h1>Featured</h1>
-    <div>
-        <a href="picture/1. MonaLisa.jpg">
-            <img src="picture/1. MonaLisa.jpg" alt="Mona Lisa">
-        </a>
-        <div>
-            <a href="#" class="detail">View Deails</a>
-        </div>
+            <div class="form-wrap">
+                <input type="text" placeholder="First Name" id="firstName">
+                <input type="text" placeholder="last Name" id="lastName">
+            </div>
+
+            <div class="form-wrap">
+                <input type="email" placeholder="Email" id="email">
+            </div>
+
+            <div class="form-wrap">
+                <input type="password" placeholder="Password (must contain 7 or more characters)" id="pass">
+            </div>
+
+            <div class="form-wrap">
+                <input type="password" placeholder="Confirm Password" id="pass2">
+            </div>
+
+            <div class="form-wrap">
+                <input type="checkbox">
+                Email me new arrivals and personalized recommendations from ArtBid auction houses.
+            </div>
+
+            <div class="form-wrap">
+                <input type="checkbox" id="policy">
+                I have read and accept Invaluables's terms of service and privacy policy.
+            </div>
+
+            <div class="button-wrap">
+                <!-- <button> Continue </button> -->
+                 <input type="submit" value="Continue">
+            </div>
+
+            <div class="form-wrap">
+                By continuing with Google, you agree to Invaluable's terms of service and privacy policy.
+            </div>
+        </form>
     </div>
-</div> -->
-<div>
-    <h1>Top 5 ART PIECES</h1>
-</div>
-
-<div class="autoplay">
-    <div id="lightgallery">
-        <a href="picture/1. MonaLisa.jpg">
-            <img src="picture/1. MonaLisa.jpg" alt="Mona Lisa">
-            <h3>Lot 1 (Mona Lisa)</h3>
-            <p>Leonardo da Vinci (1503)</p>
-            <h2>€930 million</h2>
-        </a>
-
-        <a href="picture/2. TheBirth.jpg">
-            <img src="picture/2. TheBirth.jpg" alt="The Birth">
-            <h3>Lot 2 (The Birth)</h3>
-            <p>Sandro Botticelli (c. 1485) </p>
-            <h2>€640 million</h2>
-        </a>
-
-        <a href="picture/3. TheCreationOfAdam.jpg">
-            <img src="picture/3. TheCreationOfAdam.jpg" alt="Creation of Adam">
-            <h3>Lot 3 (The Creation Of Adam)</h3>
-            <p>Michelangelo Buonarroti (c. 1512)</p>
-            <h2>€25.3 million</h3>
-        </a>
-
-        <a href="picture/4. TheLastSupper.jpg">
-            <img src="picture/4. TheLastSupper.jpg" alt="Last Supper">
-            <h3>Lot 4 (The Last Supper)</h3>
-            <p>Leonardo da Vinci (c. 1495 – 1498)</p>
-            <h2>€51.5 million</h2>
-        </a>
-
-        <a href="picture/5. SacredAndProfane.jpg">
-            <img src="picture/5. SacredAndProfane.jpg" alt="Sacred and Profane">
-            <h3>Lot 5 (Sacred And Profane)</h3>
-            <p> Titian (1515)</p>
-            <h2>€80,000</h2>
-        </a>
-
-    </div>
-</div>
-
-<footer>
-    <p>&copy; 2024 Auction. All rights reserved.</p>
-</footer>
-
-<script src="lightGallery-master/dist/lightgallery.umd.js"></script>
-<script src="lightGallery-master/dist/plugins/thumbnail/lg-thumbnail.umd.js"></script>
-<script src="lightGallery-master/dist/plugins/zoom/lg-zoom.umd.js"></script>
-
-<script>
-    lightGallery(document.getElementById('lightgallery'), {
-        plugins: [lgThumbnail],
-        speed: 500
-    });
-</script>
-
-<script src="jquery-1.11.0.min.js"></script>
-<script src="jquery-migrate-1.2.1.min.js"></script>
-<script src="slick-1.8.1/slick/slick.min.js"></script>
-
-<script>
-    $('#lightgallery').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 1500,
-    });
-</script>
-
 </body>
 </html>
