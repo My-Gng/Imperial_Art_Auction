@@ -3,14 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    background: #ebdcc3;
+    font-family: "Times New Roman", serif; /* All website to have the same font family */
+}
 
 .navigation {
     background: #1F2A44;
-    height: 90px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 3px 15px rgba(0,0,0,.15);
+    box-shadow: 0 3px 15px rgba(0,0,0,.15);   
+    font-family: "Times New Roman", serif; /* All website to have the same font family */
 }
 
 .mainnav {
