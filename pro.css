@@ -88,6 +88,10 @@ body{
 .form-wrap{
     margin-bottom:18px;
 }
+.name{
+    display: flex;
+    flex-direction: row;
+}
 
 .form-wrap input[type="text"],
 .form-wrap input[type="email"],
@@ -136,7 +140,7 @@ body{
     height:65px;
     border:none;
     border-radius:12px;
-background: #C6A75E;
+    background: #C6A75E;
     color:white;
     font-size:24px;
     font-weight:600;
