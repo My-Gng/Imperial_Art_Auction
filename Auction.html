@@ -22,7 +22,7 @@
             <a href="#">Auction</a>
             <a href="#">About Us</a>
 
-             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
+             <input type="text" id="search" placeholder="Search artworks...">
 
             <div class="sidenav">
                 <a href="Form.html">SignUp / login</a>
@@ -51,7 +51,6 @@
     </div>
     <div id="lightgallery">
         <a href="#" data-id="1" onclick="showArtInfo(this)">
-            Mona Lisa
             <img alt="Mona Lisa" src="picture/1. MonaLisa.jpg">
             <h3>Lot 1 (Mona Lisa)</h3>
             <p>Leonardo da Vinci (1503)</p>
@@ -470,10 +469,23 @@
         }
     </script>
     <script>
-        function myfunction(){
-            input = document.getElementById('myinput')
+        document.getElementById("search").addEventListener("keyup", function () {
 
-        }
+            const filter = this.value.toUpperCase();
+
+            const artworks = document.querySelectorAll("#lightgallery a");
+
+            artworks.forEach(artwork => {
+
+                const text = artwork.textContent.toUpperCase();
+
+                if (text.includes(filter)) {
+                    artwork.style.display = "";
+                } else {
+                    artwork.style.display = "none";
+                }
+            });
+        });
     </script>
 </body>
 </html>
