@@ -40,7 +40,16 @@ body {
 .sidenav {
     margin-left: auto;
 }
-/* ================= FOOTER ================= */
+/* ================= Search ================= */
+
+#myInput {
+  background-position: 10px 12px; 
+  /* width: 100%; Full-width */
+  font-size: 16px; 
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd; 
+  margin-bottom: 12px; 
+}
 
 /* .footer-text{
     margin-top:30px;
@@ -57,3 +66,6 @@ body {
 .footer-text a:hover{
     text-decoration:underline;
 } */
+ @media screen {
+    
+ }

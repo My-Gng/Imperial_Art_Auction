@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Details</title>
-    <style>
-        .search-form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 20px;
-        }
-    </style>
+
+    <link rel="stylesheet" href="model.css">
     <link rel="stylesheet" href="lightgallery.css">
     <link rel="stylesheet" href="navigation.css">
-    <link rel="stylesheet" href="pro.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="lightGallery-master/dist/css/lightgallery-bundle.css">
 </head>
+
 <body>
        <div class="navigation">
         <img src="Imperial.png" width="100px" height="100px">
@@ -27,89 +22,458 @@
             <a href="#">Auction</a>
             <a href="#">About Us</a>
 
-             <form class="search-form">
-                <input type="text" placeholder="Search for art..." id="search">
-                <button type="submit">Search</button>
-            </form>
+             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
 
             <div class="sidenav">
                 <a href="Form.html">SignUp / login</a>
             </div>
         </div>
     </div>
+    <div id="artModal" class="modal">
 
-    <div class="gallery">
-        <div id="lightgallery">
-            <a href="picture/1. MonaLisa.jpg" data-lg-size="1600-2400">
-                <img alt="Mona Lisa" src="picture/1. MonaLisa.jpg">
-            </a>
-            <a href="picture/2. TheBirth.jpg" data-lg-size="1600-2400">
-                <img alt="The Birth" src="picture/2. TheBirth.jpg">
-            </a>
-            <a href="picture/3. TheCreationOfAdam.jpg" data-lg-size="1600-2400">
-                <img alt="The Creation of Adam" src="picture/3. TheCreationOfAdam.jpg">
-            </a>
-            <a href="picture/4. TheLastSupper.jpg" data-lg-size="1600-2400">
-                <img alt="The Last Supper" src="picture/4. TheLastSupper.jpg">
-            </a>
-            <a href="picture/5. SacredAndProfane.jpg" data-lg-size="1600-2400">
-                <img alt="Sacred And Profane" src="picture/5. SacredAndProfane.jpg">
-            </a>
-            <a href="picture/6. theAncientOfDays.webp" data-lg-size="1600-2400">
-                <img alt="The Ancient Of Days" src="picture/6. theAncientOfDays.webp">
-            </a>
-            <a href="picture/7. GirlWithAPearl.webp" data-lg-size="1600-2400">
-                <img alt="Girl With A Pearl" src="picture/7. GirlWithAPearl.webp">
-            </a>
-            <a href="picture/8. TheNightWatch.webp" data-lg-size="1600-2400">
-                <img alt="The Night Watch" src="picture/8. TheNightWatch.webp">
-            </a>
-            <a href="picture/9. TheSistineMadona.webp" data-lg-size="1600-2400">
-                <img alt="The Sistine Madona" src="picture/9. TheSistineMadona.webp">
-            </a>
-            <a href="picture/10. LibertyLeadingthePeople.jpg" data-lg-size="1600-2400">
-                <img alt="Liberty Leading the People" src="picture/10. LibertyLeadingthePeople.jpg">
-            </a>
-            <a href="picture/11. TheMadonnaLitta.jpg" data-lg-size="1600-2400">
-                <img alt="The Madonna Litta" src="picture/11. TheMadonnaLitta.jpg">
-            </a>
-            <a href="picture/12. LandscapeWithTheFall.webp">
-                <img alt="Landscape With The Fall" src="picture/12. LandscapeWithTheFall.webp">
-            </a>
-            <a href="picture/13. TheSchoolofAthens.webp">
-                <img alt="The School of Athens" src="picture/13. TheSchoolofAthens.webp">
-            </a>
-            <a href="picture/14. LasMeninas.jpg">
-                <img alt="Las Meninas" src="picture/14. LasMeninas.jpg">
-            </a>
-            <a href="picture/15. TheBeheadingofSaintJohntheBaptist.webp">
-                <img alt="The Beheading of Saint John the Baptist" src="picture/15. TheBeheadingofSaintJohntheBaptist.webp">
-            </a>
-            <a href="picture/16. TheReturnoftheProdigalSon.webp" data-lg-size="1600-2400">
-                <img alt="The Return of the Prodigal Son" src="picture/16. TheReturnoftheProdigalSon.webp">
-            </a>
-            <a href="picture/17. ChristCarryingtheCross.webp">
-                <img alt="Christ Carrying the Cross" src="picture/17. ChristCarryingtheCross.webp">
-            </a>
-            <a href="picture/18. PerseusandAndromeda .jpg">
-                <img alt="Perseus and Andromeda" src="picture/18. PerseusandAndromeda .jpg">
-            </a>
-            <a href="picture/19. DepositionfromtheCross.webp">
-                <img alt="Deposition from the Cross" src="picture/19. DepositionfromtheCross.webp">
-            </a>
-            <a href="picture/20. ThePersistenceofMemory.webp">
-                <img alt="The Persistence of Memory" src="picture/20. ThePersistenceofMemory.webp">
-            </a>
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-left">
+                <img id="modalImage">
+            </div>
+            <div class="modal-right">
+                <h1 id="modalTitle"></h1>
+                <h3 id="modalArtist"></h3>
+                <p><strong>Year:</strong> <span id="modalYear"></span></p>
+                <p><strong>Medium:</strong> <span id="modalMedium"></span></p>
+                <p><strong>Dimensions:</strong> <span id="modalDimensions"></span></p>
+                <p><strong>Estimated Value:</strong> <span id="modalPrice"></span></p>
+                <p id="modalDescription"></p>
+            </div>
+
         </div>
+
     </div>
-    <script src="lightGallery-master/dist/lightgallery.umd.js"></script>
+    <div id="lightgallery">
+        <a href="#" data-id="1" onclick="showArtInfo(this)">
+            Mona Lisa
+            <img alt="Mona Lisa" src="picture/1. MonaLisa.jpg">
+            <h3>Lot 1 (Mona Lisa)</h3>
+            <p>Leonardo da Vinci (1503)</p>
+            <h2>€930 million</h2>
+        </a>
+
+        <a href="#" data-id="2" onclick="showArtInfo(this)">
+            <img alt="The Birth" src="picture/2. TheBirth.jpg">
+            <h3>Lot 2 (The Birth)</h3>
+            <p>Sandro Botticelli (c. 1485) </p>
+            <h2>€640 million</h2>
+        </a>
+
+        <a href="#" data-id="3" onclick="showArtInfo(this)">
+            <img alt="The Creation of Adam" src="picture/3. TheCreationOfAdam.jpg">
+            <h3>Lot 3 (The Creation Of Adam)</h3>
+            <p>Michelangelo Buonarroti (c. 1512)</p>
+            <h2>€25.3 million</h2>
+        </a>
+
+        <a href="#" data-id="4" onclick="showArtInfo(this)">
+            <img alt="The Last Supper" src="picture/4. TheLastSupper.jpg">
+            <h3>Lot 4 (The Last Supper)</h3>
+            <p>Leonardo da Vinci (c. 1495 – 1498)</p>
+            <h2>€51.5 million</h2>
+        </a>
+
+        <a href="#" data-id="5" onclick="showArtInfo(this)">
+            <img alt="Sacred And Profane" src="picture/5. SacredAndProfane.jpg">
+            <h3>Lot 5 (Sacred And Profane)</h3>
+            <p> Titian (1515)</p>
+            <h2>€80,000</h2>
+        </a>
+
+        <a href="#" data-id="6" onclick="showArtInfo(this)">
+            <img alt="The Ancient Of Days" src="picture/6. theAncientOfDays.webp">
+            <h3>Lot 6 (The Ancient Of Days)</h3>
+            <p>William Blake (1794)</p>
+            <h2>€12.5 million</h2>
+        </a>
+
+        <a href="#" data-id="7" onclick="showArtInfo(this)">
+            <img alt="Girl With A Pearl" src="picture/7. GirlWithAPearl.webp">
+            <h3>Lot 7 (Girl With A Pearl Earring)</h3>
+            <p>Johannes Vermeer (c. 1665)</p>
+            <h2>€700 million</h2>
+        </a>
+
+        <a href="#" data-id="8" onclick="showArtInfo(this)">
+            <img alt="The Night Watch" src="picture/8. TheNightWatch.webp">
+            <h3>Lot 8 (The Night Watch)</h3>
+            <p>Rembrandt van Rijn (1642)</p>
+            <h2>€500 million</h2>
+        </a>
+
+        <a href="#" data-id="9" onclick="showArtInfo(this)">
+            <img alt="The Sistine Madona" src="picture/9. TheSistineMadona.webp">
+            <h3>Lot 9 (The Sistine Madonna)</h3>
+            <p>Raphael (1512–1513)</p>
+            <h2>€450 million</h2>
+        </a>
+
+        <a href="#" data-id="10" onclick="showArtInfo(this)">
+            <img alt="Liberty Leading the People" src="picture/10. LibertyLeadingthePeople.jpg">
+            <h3>Lot 10 (Liberty Leading the People)</h3>
+            <p>Eugène Delacroix (1830)</p>
+            <h2>€120 million</h2>
+        </a>
+
+        <a href="#" data-id="11" onclick="showArtInfo(this)">
+            <img alt="The Madonna Litta" src="picture/11. TheMadonnaLitta.jpg">
+            <h3>Lot 11 (The Madonna Litta)</h3>
+            <p>Leonardo da Vinci (c. 1490)</p>
+            <h2>€80 million</h2>
+        </a>
+
+        <a href="#" data-id="12" onclick="showArtInfo(this)">
+            <img alt="Landscape With The Fall" src="picture/12. LandscapeWithTheFall.webp">
+            <h3>Lot 12 (Landscape With the Fall of Icarus)</h3>
+            <p>Pieter Bruegel the Elder (c. 1560)</p>
+            <h2>€35 million</h2>
+        </a>
+
+        <a href="#" data-id="13" onclick="showArtInfo(this)">
+            <img alt="The School of Athens" src="picture/13. TheSchoolofAthens.webp">
+            <h3>Lot 13 (The School of Athens)</h3>
+            <p>Raphael (1509–1511)</p>
+            <h2>€300 million</h2>
+        </a>
+
+        <a href="#" data-id="14" onclick="showArtInfo(this)">
+            <img alt="Las Meninas" src="picture/14. LasMeninas.jpg">
+            <h3>Lot 14 (Las Meninas)</h3>
+            <p>Diego Velázquez (1656)</p>
+            <h2>€250 million</h2>
+        </a>
+
+        <a href="#" data-id="15" onclick="showArtInfo(this)">
+            <img alt="The Beheading of Saint John the Baptist" src="picture/15. TheBeheadingofSaintJohntheBaptist.webp">
+            <h3>Lot 15 (The Beheading of Saint John the Baptist)</h3>
+            <p>Caravaggio (1608)</p>
+            <h2>€90 million</h2>
+        </a>
+
+        <a href="#" data-id="16" onclick="showArtInfo(this)">
+            <img alt="The Return of the Prodigal Son" src="picture/16. TheReturnoftheProdigalSon.webp">
+            <h3>Lot 16 (The Return of the Prodigal Son)</h3>
+            <p>Rembrandt van Rijn (1669)</p>
+            <h2>€110 million</h2>
+        </a>
+
+        <a href="#" data-id="17" onclick="showArtInfo(this)">
+            <img alt="Christ Carrying the Cross" src="picture/17. ChristCarryingtheCross.webp">
+            <h3>Lot 17 (Christ Carrying the Cross)</h3>
+            <p>El Greco (c. 1580)</p>
+            <h2>€45 million</h2>
+        </a>
+
+        <a href="#" data-id="18" onclick="showArtInfo(this)">
+            <img alt="Perseus and Andromeda" src="picture/18. PerseusandAndromeda .jpg">
+            <h3>Lot 18 (Perseus and Andromeda)</h3>
+            <p>Peter Paul Rubens (1622)</p>
+            <h2>€75 million</h2>
+        </a>
+
+        <a href="#" data-id="19" onclick="showArtInfo(this)">
+            <img alt="Deposition from the Cross" src="picture/19. DepositionfromtheCross.webp">
+            <h3>Lot 19 (Deposition from the Cross)</h3>
+            <p>Peter Paul Rubens (1612–1614)</p>
+            <h2>€95 million</h2>
+        </a>
+
+        <a href="#" data-id="20" onclick="showArtInfo(this)">
+            <img alt="The Persistence of Memory" src="picture/20. ThePersistenceofMemory.webp">
+            <h3>Lot 20 (The Persistence of Memory)</h3>
+            <p>Salvador Dalí (1931)</p>
+            <h2>€150 million</h2>
+        </a>
+    </div>
+    <!-- <button id=“fetchData”>Fetch Data</button>
+    <pre id=“responseData”></pre>        
+    document.getElementById(‘fetchData’).addEventListener(‘click’, function () {
+        fetch(‘https://api.restful-api.dev/objects/7’)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(‘Network response was not ok’);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                document.getElementById(‘responseData’).textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById(‘responseData’).textContent = ‘Error: ‘ + error.message;
+            });
+    }); -->
+    <!-- <script src="lightGallery-master/dist/lightgallery.umd.js"></script>
     <script src="lightGallery-master/dist/plugins/thumbnail/lg-thumbnail.umd.js"></script>
     <script src="lightGallery-master/dist/plugins/zoom/lg-zoom.umd.js"></script>
     <script>
-        lightGallery(document.getElementById('lightgallery'), {
-            plugins: [lgZoom, lgThumbnail],
-            speed: 100
-        });
+    lightGallery(document.getElementById('lightgallery'), {
+        plugins: [lgThumbnail],
+        speed: 500
+    });
+    </script> -->
+
+    <script>
+        const artworks = {
+
+            1:{
+            title:"Mona Lisa",
+            artist:"Leonardo da Vinci",
+            year:"1503",
+            price:"€930 million",
+            medium:"Oil on poplar panel",
+            dimensions:"77 cm × 53 cm",
+            description:"The Mona Lisa is widely regarded as the most famous portrait ever created. Its mysterious smile and masterful use of sfumato have captivated viewers for centuries."
+            },
+
+            2:{
+            title:"The Birth of Venus",
+            artist:"Sandro Botticelli",
+            year:"c. 1485",
+            price:"€640 million",
+            medium:"Tempera on canvas",
+            dimensions:"172.5 cm × 278.9 cm",
+            description:"Depicts the goddess Venus emerging from the sea upon a shell, symbolizing beauty, love, and divine creation."
+            },
+
+            3:{
+            title:"The Creation of Adam",
+            artist:"Michelangelo",
+            year:"1512",
+            price:"€25.3 million",
+            medium:"Fresco",
+            dimensions:"280 cm × 570 cm",
+            description:"One of the most iconic frescoes in the Sistine Chapel, illustrating the biblical creation of Adam."
+            },
+
+            4:{
+            title:"The Last Supper",
+            artist:"Leonardo da Vinci",
+            year:"1495–1498",
+            price:"€51.5 million",
+            medium:"Tempera and oil on plaster",
+            dimensions:"460 cm × 880 cm",
+            description:"Depicts Jesus and his disciples during the final meal before the crucifixion."
+            },
+
+            5:{
+            title:"Sacred and Profane Love",
+            artist:"Titian",
+            year:"1515",
+            price:"€80,000",
+            medium:"Oil on canvas",
+            dimensions:"118 cm × 279 cm",
+            description:"An allegorical masterpiece contrasting earthly and divine love."
+            },
+
+            6:{
+            title:"The Ancient of Days",
+            artist:"William Blake",
+            year:"1794",
+            price:"€12.5 million",
+            medium:"Relief etching",
+            dimensions:"23 cm × 17 cm",
+            description:"A symbolic representation of creation from Blake's prophetic works."
+            },
+
+            7:{
+            title:"Girl with a Pearl Earring",
+            artist:"Johannes Vermeer",
+            year:"1665",
+            price:"€700 million",
+            medium:"Oil on canvas",
+            dimensions:"44.5 cm × 39 cm",
+            description:"Known as the 'Dutch Mona Lisa', famous for its captivating gaze."
+            },
+
+            8:{
+            title:"The Night Watch",
+            artist:"Rembrandt",
+            year:"1642",
+            price:"€500 million",
+            medium:"Oil on canvas",
+            dimensions:"363 cm × 437 cm",
+            description:"A celebrated militia portrait renowned for its dramatic lighting."
+            },
+
+            9:{
+            title:"The Sistine Madonna",
+            artist:"Raphael",
+            year:"1512–1513",
+            price:"€450 million",
+            medium:"Oil on canvas",
+            dimensions:"265 cm × 196 cm",
+            description:"One of Raphael's most admired works featuring the Virgin Mary."
+            },
+
+            10:{
+            title:"Liberty Leading the People",
+            artist:"Eugène Delacroix",
+            year:"1830",
+            price:"€120 million",
+            medium:"Oil on canvas",
+            dimensions:"260 cm × 325 cm",
+            description:"Commemorates the July Revolution in France."
+            },
+
+            11:{
+            title:"The Madonna Litta",
+            artist:"Leonardo da Vinci",
+            year:"1490",
+            price:"€80 million",
+            medium:"Tempera on panel",
+            dimensions:"42 cm × 33 cm",
+            description:"A tender portrayal of the Virgin Mary nursing Christ."
+            },
+
+            12:{
+            title:"Landscape with the Fall of Icarus",
+            artist:"Pieter Bruegel the Elder",
+            year:"1560",
+            price:"€35 million",
+            medium:"Oil on canvas",
+            dimensions:"73.5 cm × 112 cm",
+            description:"Highlights humanity's indifference to tragedy."
+            },
+
+            13:{
+            title:"The School of Athens",
+            artist:"Raphael",
+            year:"1509–1511",
+            price:"€300 million",
+            medium:"Fresco",
+            dimensions:"500 cm × 770 cm",
+            description:"Celebrates the greatest philosophers of ancient Greece."
+            },
+
+            14:{
+            title:"Las Meninas",
+            artist:"Diego Velázquez",
+            year:"1656",
+            price:"€250 million",
+            medium:"Oil on canvas",
+            dimensions:"318 cm × 276 cm",
+            description:"A masterpiece of perspective and royal portraiture."
+            },
+
+            15:{
+            title:"The Beheading of Saint John the Baptist",
+            artist:"Caravaggio",
+            year:"1608",
+            price:"€90 million",
+            medium:"Oil on canvas",
+            dimensions:"361 cm × 520 cm",
+            description:"Caravaggio's largest and only signed painting."
+            },
+
+            16:{
+            title:"The Return of the Prodigal Son",
+            artist:"Rembrandt",
+            year:"1669",
+            price:"€110 million",
+            medium:"Oil on canvas",
+            dimensions:"262 cm × 205 cm",
+            description:"A moving depiction of forgiveness and redemption."
+            },
+
+            17:{
+            title:"Christ Carrying the Cross",
+            artist:"El Greco",
+            year:"1580",
+            price:"€45 million",
+            medium:"Oil on canvas",
+            dimensions:"105 cm × 79 cm",
+            description:"Expresses spiritual devotion through dramatic color and emotion."
+            },
+
+            18:{
+            title:"Perseus and Andromeda",
+            artist:"Peter Paul Rubens",
+            year:"1622",
+            price:"€75 million",
+            medium:"Oil on canvas",
+            dimensions:"99 cm × 139 cm",
+            description:"Depicts the mythological rescue of Andromeda by Perseus."
+            },
+
+            19:{
+            title:"Deposition from the Cross",
+            artist:"Peter Paul Rubens",
+            year:"1612–1614",
+            price:"€95 million",
+            medium:"Oil on panel",
+            dimensions:"421 cm × 311 cm",
+            description:"One of the finest examples of Baroque religious art."
+            },
+
+            20:{
+            title:"The Persistence of Memory",
+            artist:"Salvador Dalí",
+            year:"1931",
+            price:"€150 million",
+            medium:"Oil on canvas",
+            dimensions:"24 cm × 33 cm",
+            description:"Famous for its surreal melting clocks and dreamlike imagery."
+            }
+        };
+        function showArtInfo(element){
+
+            const art = artworks[element.dataset.id];
+
+            if(!art) return;
+
+            document.getElementById("artModal").style.display = "block";
+
+            document.getElementById("modalImage").src =
+            element.querySelector("img").src;
+
+            document.getElementById("modalTitle").textContent =
+            art.title;
+
+            document.getElementById("modalArtist").textContent =
+            art.artist;
+
+            document.getElementById("modalYear").textContent =
+            art.year;
+
+            document.getElementById("modalPrice").textContent =
+            art.price;
+
+            document.getElementById("modalMedium").textContent =
+            art.medium;
+
+            document.getElementById("modalDimensions").textContent =
+            art.dimensions;
+
+            document.getElementById("modalDescription").textContent =
+            art.description;
+        }
+
+        function closeModal(){
+            document.getElementById("artModal").style.display = "none";
+        }
+
+        window.onclick = function(e){
+
+            const modal =
+            document.getElementById("artModal");
+
+            if(e.target === modal){
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        function myfunction(){
+            input = document.getElementById('myinput')
+
+        }
     </script>
 </body>
 </html>
