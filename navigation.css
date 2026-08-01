@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,21 +8,10 @@ body {
     font-family: "Times New Roman", serif;
 }
 
-.navigation {
-    background: #1F2A44;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 3px 15px rgba(0,0,0,.15);   
-    font-family: "Times New Roman", serif;
-
-}
-
 .mainnav {
     width: 90%;
     display: flex;
-    align-items: center;
+    align-items: left;
 }
 
 .mainnav a {
@@ -37,35 +26,73 @@ body {
     color: #d4af37;
 }
 
-.sidenav {
-    margin-left: auto;
-}
 /* ================= Search ================= */
 
-#myInput {
+/* #search {
   background-position: 10px 12px; 
-  /* width: 100%; Full-width */
+
   font-size: 16px; 
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd; 
-  margin-bottom: 12px; 
+}/*
+
+ /* ---------------- Desktop Navigation ---------------- */
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#1f2942;
+    padding:15px 40px;
 }
 
-/* .footer-text{
-    margin-top:30px;
-    text-align:center;
-    color:#666;
-    font-size:15px;
+.logo{
+    width:80px;
 }
 
-.footer-text a{
-    color:#d4af37;
+/* .mainnav a{
+    color:white;
     text-decoration:none;
+    font-size:22px;
+} */
+
+.menu-btn{
+    display:none;
+    color:white;
+    font-size:35px;
+    cursor:pointer;
 }
 
-.footer-text a:hover{
-    text-decoration:underline;
-} */
- @media screen {
-    
- }
+
+/* ---------------- Mobile ---------------- */
+
+@media screen and (max-width:768px){
+
+.navigation{
+    flex-wrap:wrap;
+}
+
+.menu-btn{
+    display:block;
+}
+
+.mainnav{
+    display:none;
+    width:100%;
+    flex-direction:column;
+    margin-top:20px;
+}
+
+.mainnav a{
+    display:block;
+    width:100%;
+    padding:15px;
+    border-top:1px solid rgba(255,255,255,.2);
+    text-align:center;
+}
+
+.mainnav.show{
+    display:flex;
+}
+
+}

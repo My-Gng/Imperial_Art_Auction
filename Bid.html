@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction</title>
+    <link rel="stylesheet" href="navigation.css">
+    <style>
+        .popup{
+            display: none;      /* Hide popup initially */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content{
+            width:380px;
+            padding:30px;
+            border-radius:15px;
+            background:linear-gradient(135deg, #ffffff, #f3f4f6);
+            box-shadow:0 10px 30px rgba(0,0,0,0.3);
+            text-align:center;
+            position:relative;
+            border:1px solid rgba(255,255,255,0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="navigation">
+
+    <img src="Imperial.png" class="logo">
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        &#9776;
+    </div>
+
+    <div class="mainnav" id="navLinks">
+        <a href="Home.html">Home</a>
+        <a href="Auction.html">Art Information</a>
+        <a href="Bid.html">Auction</a>
+        <a href="#">About Us</a>
+        <a href="Form.html">SignUp / Login</a>
+    </div>
+    </div>
+    <button onclick="openPopup()">Place Bid</button>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+
+            <span class="close" onclick="closePopup()">&times;</span>
+
+            <h2>Place Your Bid</h2>
+
+            <label>Name:</label><br>
+            <input type="text" id="bidName" placeholder="Enter your name"><br><br>
+
+            <label>Lot No:</label><br>
+            <input type="text" id="lotNo" placeholder="Enter lot number"><br><br>
+
+            <label>Amount:</label><br>
+            <input type="number" id="bidAmount" placeholder="Enter bid amount"><br><br>
+
+            <button onclick="submitBid()">Place Bid</button>
+
+        </div>
+    </div>
+    <script>
+        function openPopup(){
+            document.getElementById("popup").style.display = "flex";
+            document.getElementById("lotNo").value = lot;
+            document.getElementById("bidName").value = "";
+            document.getElementById("bidAmount").value = "";
+        }
+
+        function closePopup(){
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function submitBid() {
+
+            let name = document.getElementById("bidName").value;
+            let lot = document.getElementById("lotNo").value;
+            let amount = document.getElementById("bidAmount").value;
+
+            if (name == "" || amount == "") {
+                alert("Please fill in all the fields.");
+                return;
+            }
+
+            alert(
+                "Thank you, " + name +
+                "!\n\nYour bid of $" + amount +
+                " has been placed on Lot No. " + lot +
+                ".\n\nWe will notify you by email if you have successfully won the auction."
+            );
+
+            closePopup();
+        }
+    </script>
+</body>
+</html>

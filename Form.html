@@ -7,31 +7,71 @@
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="pro.css">
+    <link rel="stylesheet" href="bid.html">
 </head>
 <body>
    <div class="navigation">
-        <img src="Imperial.png" width="100px" height="100px">
-        <div class="mainnav">
 
-            <a href="Home.html">Home</a>
-            <a href="Auction.html">Art Information</a>
-            <a href="#">Auction</a>
-            <a href="#">About Us</a>
+    <img src="Imperial.png" class="logo">
 
-            <div class="sidenav">
-                <a href="Form.html">SignUp / login</a>
-            </div>
-        </div>
-        </div>
+    <div class="menu-btn" onclick="toggleMenu()">
+        &#9776;
+    </div>
+
+    <div class="mainnav" id="navLinks">
+        <a href="Home.html">Home</a>
+        <a href="Auction.html">Art Information</a>
+        <a href="Bid.html">Auction</a>
+        <a href="#">About Us</a>
+        <a href="Form.html">SignUp / Login</a>
+    </div>
+
+</div>
     
-    <div class="login">
-        <form>
+    <div class="login" onsubmit="return validateForm()">
+        <!-- <form> -->
+            <!-- <div class="head">
+                <h2>SIGN UP</h2>
+                <h4>Create an account to make bidding fast and easy!.</h4>
+            </div> -->
+
+        <form id="signupForm" return >
             <div class="head">
                 <h2>SIGN UP</h2>
                 <h4>Create an account to make bidding fast and easy!.</h4>
             </div>
+            <div class="form-wrap">
+                <input type="text" placeholder="First Name" id="firstName">
+                <input type="text" placeholder="Last Name" id="lastName">
+            </div>
 
             <div class="form-wrap">
+                <input type="email" placeholder="Email" id="email">
+            </div>
+
+            <div class="form-wrap">
+                <input type="password"
+                    placeholder="Password (must contain 7 or more characters)"
+                    id="pass">
+            </div>
+
+            <div class="form-wrap">
+                <input type="password"
+                    placeholder="Confirm Password"
+                    id="pass2">
+            </div>
+
+            <div class="form-wrap">
+                <input type="checkbox" id="newsletter">
+                Email me new arrivals and personalized recommendations from ArtBid auction houses.
+            </div>
+
+            <div class="form-wrap">
+                <input type="checkbox" id="policy">
+                I have read and accept Invaluable's terms of service and privacy policy.
+            </div>
+
+            <!-- <div class="form-wrap">
                 <div class="name">
                     <input type="text" placeholder="First Name" id="firstName">
                     <input type="text" placeholder="last Name" id="lastName">
@@ -58,17 +98,86 @@
             <div class="form-wrap">
                 <input type="checkbox" id="policy">
                 I have read and accept Invaluables's terms of service and privacy policy.
-            </div>
+            </div> -->
 
             <div class="button-wrap">
-                <!-- <button> Continue </button> -->
                  <input type="submit" value="Continue">
             </div>
-
-            <div class="form-wrap">
-                By continuing with Google, you agree to Invaluable's terms of service and privacy policy.
-            </div>
-        </form>
+        </form> 
     </div>
+    <script>
+    function formValidation() {
+
+    let firstName = document.getElementById("firstName").value.trim();
+    let lastName = document.getElementById("lastName").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("pass").value;
+    let confirmPassword = document.getElementById("pass2").value;
+    let dob = document.getElementById("dob").value;
+    let policy = document.getElementById("policy").checked;
+
+    // First Name
+    if (firstName == "") {
+        alert("Please enter your first name.");
+        return false;
+    }
+
+    // Last Name
+    if (lastName == "") {
+        alert("Please enter your last name.");
+        return false;
+    }
+
+    // Email Validation
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    // Password length
+    if (password.length < 7) {
+        alert("Password must contain at least 7 characters.");
+        return false;
+    }
+
+    // Confirm Password
+    if (password != confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+    // Date of Birth
+    if (dob == "") {
+        alert("Please enter your Date of Birth.");
+        return false;
+    }
+
+    let birthDate = new Date(dob);
+    let today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let month = today.getMonth() - birthDate.getMonth();
+
+    if (month < 0 || (month == 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    if (age < 18) {
+        alert("You must be at least 18 years old.");
+        return false;
+    }
+
+    // Terms Checkbox
+    if (!policy) {
+        alert("Please accept the Terms and Privacy Policy.");
+        return false;
+    }
+
+    alert("Registration Successful!");
+    return true;
+};
+</script>
 </body>
 </html>

@@ -10,10 +10,19 @@
     <link rel="stylesheet" href="navigation.css">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="lightGallery-master/dist/css/lightgallery-bundle.css">
+    <style>
+        #search {
+            justify-content: center;
+            padding: 5px;
+            margin-left: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 
 <body>
-       <div class="navigation">
+       <!-- <div class="navigation">
         <img src="Imperial.png" width="100px" height="100px">
         <div class="mainnav">
 
@@ -28,7 +37,26 @@
                 <a href="Form.html">SignUp / login</a>
             </div>
         </div>
+    </div> -->
+    <div class="navigation">
+
+    <img src="Imperial.png" class="logo">
+
+    <div class="menu-btn" onclick="toggleMenu()">
+        &#9776;
     </div>
+
+    <div class="mainnav" id="navLinks">
+        <a href="Home.html">Home</a>
+        <a href="Auction.html">Art Information</a>
+        <a href="Bid.html">Auction</a>
+        <a href="#">About Us</a>
+        <a href="Form.html">SignUp / Login</a>
+        <input type="text" id="search" placeholder="Search artworks...">
+    </div>
+
+</div>
+
     <div id="artModal" class="modal">
 
         <div class="modal-content">
@@ -50,6 +78,18 @@
 
     </div>
     <div id="lightgallery">
+        <a href="#" data-id="21" onclick="showArtInfo(this)">
+            <img alt="Mona Lisa" src="picture/Arpan king.jpg">
+            <h3>Lot 21 (Arpan King)</h3>
+            <p>Smandhi</p>
+            <h2>€930 billion</h2>
+        </a>
+        <a href="#" data-id="22" onclick="showArtInfo(this)">
+            <img alt="Mona Lisa" src="picture/Gane ka juice.jpg">
+            <h3>Lot 22 (Gane ka juice)</h3>
+            <p>Smandhi</p>
+            <h2>€8 billion</h2>
+        </a>
         <a href="#" data-id="1" onclick="showArtInfo(this)">
             <img alt="Mona Lisa" src="picture/1. MonaLisa.jpg">
             <h3>Lot 1 (Mona Lisa)</h3>
@@ -486,6 +526,13 @@
                 }
             });
         });
+
+        
+    </script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("show");
+        }
     </script>
 </body>
 </html>
