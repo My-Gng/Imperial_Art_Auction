@@ -22,22 +22,6 @@
 </head>
 
 <body>
-       <!-- <div class="navigation">
-        <img src="Imperial.png" width="100px" height="100px">
-        <div class="mainnav">
-
-            <a href="Home.html">Home</a>
-            <a href="Auction.html">Art Information</a>
-            <a href="#">Auction</a>
-            <a href="#">About Us</a>
-
-             <input type="text" id="search" placeholder="Search artworks...">
-
-            <div class="sidenav">
-                <a href="Form.html">SignUp / login</a>
-            </div>
-        </div>
-    </div> -->
     <div class="navigation">
 
     <img src="Imperial.png" class="logo">
@@ -78,18 +62,6 @@
 
     </div>
     <div id="lightgallery">
-        <a href="#" data-id="21" onclick="showArtInfo(this)">
-            <img alt="Mona Lisa" src="picture/Arpan king.jpg">
-            <h3>Lot 21 (Arpan King)</h3>
-            <p>Smandhi</p>
-            <h2>€930 billion</h2>
-        </a>
-        <a href="#" data-id="22" onclick="showArtInfo(this)">
-            <img alt="Mona Lisa" src="picture/Gane ka juice.jpg">
-            <h3>Lot 22 (Gane ka juice)</h3>
-            <p>Smandhi</p>
-            <h2>€8 billion</h2>
-        </a>
         <a href="#" data-id="1" onclick="showArtInfo(this)">
             <img alt="Mona Lisa" src="picture/1. MonaLisa.jpg">
             <h3>Lot 1 (Mona Lisa)</h3>
@@ -230,37 +202,9 @@
             <h2>€150 million</h2>
         </a>
     </div>
-    <!-- <button id=“fetchData”>Fetch Data</button>
-    <pre id=“responseData”></pre>        
-    document.getElementById(‘fetchData’).addEventListener(‘click’, function () {
-        fetch(‘https://api.restful-api.dev/objects/7’)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(‘Network response was not ok’);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                document.getElementById(‘responseData’).textContent = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                document.getElementById(‘responseData’).textContent = ‘Error: ‘ + error.message;
-            });
-    }); -->
-    <!-- <script src="lightGallery-master/dist/lightgallery.umd.js"></script>
-    <script src="lightGallery-master/dist/plugins/thumbnail/lg-thumbnail.umd.js"></script>
-    <script src="lightGallery-master/dist/plugins/zoom/lg-zoom.umd.js"></script>
-    <script>
-    lightGallery(document.getElementById('lightgallery'), {
-        plugins: [lgThumbnail],
-        speed: 500
-    });
-    </script> -->
 
     <script>
         const artworks = {
-
             1:{
             title:"Mona Lisa",
             artist:"Leonardo da Vinci",

@@ -26,18 +26,6 @@ body {
     color: #d4af37;
 }
 
-/* ================= Search ================= */
-
-/* #search {
-  background-position: 10px 12px; 
-
-  font-size: 16px; 
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd; 
-}/*
-
- /* ---------------- Desktop Navigation ---------------- */
-
 .navigation{
     display:flex;
     justify-content:space-between;
@@ -50,12 +38,6 @@ body {
     width:80px;
 }
 
-/* .mainnav a{
-    color:white;
-    text-decoration:none;
-    font-size:22px;
-} */
-
 .menu-btn{
     display:none;
     color:white;
@@ -64,35 +46,33 @@ body {
 }
 
 
-/* ---------------- Mobile ---------------- */
-
 @media screen and (max-width:768px){
 
-.navigation{
-    flex-wrap:wrap;
-}
+    .navigation{
+        flex-wrap:wrap;
+    }
 
-.menu-btn{
-    display:block;
-}
+    .menu-btn{
+        display:block;
+    }
 
-.mainnav{
-    display:none;
-    width:100%;
-    flex-direction:column;
-    margin-top:20px;
-}
+    .mainnav{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        margin-top:20px;
+    }
 
-.mainnav a{
-    display:block;
-    width:100%;
-    padding:15px;
-    border-top:1px solid rgba(255,255,255,.2);
-    text-align:center;
-}
+    .mainnav a{
+        display:block;
+        width:100%;
+        padding:15px;
+        border-top:1px solid rgba(255,255,255,.2);
+        text-align:center;
+    }
 
-.mainnav.show{
-    display:flex;
-}
+    .mainnav.show{
+        display:flex;
+    }
 
 }

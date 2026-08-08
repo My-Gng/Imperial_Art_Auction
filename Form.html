@@ -28,14 +28,8 @@
 
 </div>
     
-    <div class="login" onsubmit="return validateForm()">
-        <!-- <form> -->
-            <!-- <div class="head">
-                <h2>SIGN UP</h2>
-                <h4>Create an account to make bidding fast and easy!.</h4>
-            </div> -->
-
-        <form id="signupForm" return >
+    <div class="login" >
+        <form id="signupform" onsubmit="return formValidation()" >
             <div class="head">
                 <h2>SIGN UP</h2>
                 <h4>Create an account to make bidding fast and easy!.</h4>
@@ -70,114 +64,51 @@
                 <input type="checkbox" id="policy">
                 I have read and accept Invaluable's terms of service and privacy policy.
             </div>
-
-            <!-- <div class="form-wrap">
-                <div class="name">
-                    <input type="text" placeholder="First Name" id="firstName">
-                    <input type="text" placeholder="last Name" id="lastName">
-                </div>
-            </div>
-
-            <div class="form-wrap">
-                <input type="email" placeholder="Email" id="email">
-            </div>
-
-            <div class="form-wrap">
-                <input type="password" placeholder="Password (must contain 7 or more characters)" id="pass">
-            </div>
-
-            <div class="form-wrap">
-                <input type="password" placeholder="Confirm Password" id="pass2">
-            </div>
-
-            <div class="form-wrap">
-                <input type="checkbox">
-                Email me new arrivals and personalized recommendations from ArtBid auction houses.
-            </div>
-
-            <div class="form-wrap">
-                <input type="checkbox" id="policy">
-                I have read and accept Invaluables's terms of service and privacy policy.
-            </div> -->
-
             <div class="button-wrap">
                  <input type="submit" value="Continue">
             </div>
         </form> 
     </div>
     <script>
-    function formValidation() {
+        function formValidation() {
+            let name = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("pass").value;
+            let confirmPassword = document.getElementById("pass2").value;
+            let policy = document.getElementById("policy").checked;
 
-    let firstName = document.getElementById("firstName").value.trim();
-    let lastName = document.getElementById("lastName").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let password = document.getElementById("pass").value;
-    let confirmPassword = document.getElementById("pass2").value;
-    let dob = document.getElementById("dob").value;
-    let policy = document.getElementById("policy").checked;
+            if (name === "" || lastName === "" || email === "" || password === "" || confirmPassword === "") {
+                alert("Please fill in all the fields.");
+                return false;
+            }
 
-    // First Name
-    if (firstName == "") {
-        alert("Please enter your first name.");
-        return false;
-    }
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Last Name
-    if (lastName == "") {
-        alert("Please enter your last name.");
-        return false;
-    }
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
 
-    // Email Validation
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (password.length < 7) {
+                alert("Password must contain 7 or more characters.");
+                return false;
+            }
 
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        return false;
-    }
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
 
-    // Password length
-    if (password.length < 7) {
-        alert("Password must contain at least 7 characters.");
-        return false;
-    }
+            if (!policy) {
+                alert("Please accept the terms of service and privacy policy.");
+                return false;
+            }
 
-    // Confirm Password
-    if (password != confirmPassword) {
-        alert("Passwords do not match.");
-        return false;
-    }
+            alert("Registration successful!");
 
-    // Date of Birth
-    if (dob == "") {
-        alert("Please enter your Date of Birth.");
-        return false;
-    }
-
-    let birthDate = new Date(dob);
-    let today = new Date();
-
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let month = today.getMonth() - birthDate.getMonth();
-
-    if (month < 0 || (month == 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-
-    if (age < 18) {
-        alert("You must be at least 18 years old.");
-        return false;
-    }
-
-    // Terms Checkbox
-    if (!policy) {
-        alert("Please accept the Terms and Privacy Policy.");
-        return false;
-    }
-
-    alert("Registration Successful!");
-    return true;
-};
-</script>
+            return true;
+        }
+    </script>
 </body>
 </html>
